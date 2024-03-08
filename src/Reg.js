@@ -9,7 +9,7 @@ import {
 import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 
-const Login = () => {
+const Reg = () => {
   return (
     <View>
       <Image
@@ -24,13 +24,16 @@ const Login = () => {
       </TouchableOpacity>
       <View>
         <View style={{paddingLeft: 30, paddingRight: 30}}>
-          <Text style={styles.txtwelcome}>Chào mừng bạn</Text>
-          <Text style={styles.txtdn}>Đăng nhập tài khoản</Text>
+          <Text style={styles.txtwelcome}>Đăng kí</Text>
+          <Text style={styles.txtdn}>Tạo tài khoản</Text>
           <View style={styles.inputpass}>
-            <TextInput
-              style={{width: '90%'}}
-              placeholder="Nhập email hoặc số điện thoại"
-            />
+            <TextInput style={{width: '90%'}} placeholder="Họ tên" />
+          </View>
+          <View style={styles.inputpass}>
+            <TextInput style={{width: '90%'}} placeholder="Email" />
+          </View>
+          <View style={styles.inputpass}>
+            <TextInput style={{width: '90%'}} placeholder="Số điẹn thoại" />
           </View>
           <View style={styles.inputpass}>
             <TextInput style={{width: '80%'}} placeholder="Mật khẩu" />
@@ -39,27 +42,23 @@ const Login = () => {
               source={require('../assets/img/eye_off.png')}
             />
           </View>
-          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <View style={{flexDirection: 'row'}}>
-              <Image
-                style={{width: 22, height: 22}}
-                source={require('../assets/img/check.png')}
-              />
-              <Text style={[styles.txtrem, {color: '#949090'}]}>
-                Ghi nhớ tài khoản
-              </Text>
-            </View>
-            <Text style={[styles.txtrem, {color: '#009245'}]}>
-              Forgot Password ?
+          <Text style={styles.txtagre}>
+            Để đăng ký tài khoản, bạn đồng ý{' '}
+            <Text style={{color: '#009245', textDecorationLine: 'underline'}}>
+              Terms & Conditions
+            </Text>{' '}
+            and{' '}
+            <Text style={{color: '#009245', textDecorationLine: 'underline'}}>
+              Privacy Policy
             </Text>
-          </View>
+          </Text>
           <TouchableOpacity activeOpacity={0.8}>
             <LinearGradient
               colors={['#007537', '#4CAF50']}
               style={styles.btn}
               start={{x: 0, y: 0}}
               end={{x: 1, y: 1}}>
-              <Text style={styles.btndn}>Đăng nhập</Text>
+              <Text style={styles.btndn}>Đăng kí</Text>
             </LinearGradient>
           </TouchableOpacity>
           <View style={styles.lineor}>
@@ -90,10 +89,8 @@ const Login = () => {
             />
           </View>
           <Text style={[styles.txtdk, {color: 'black'}]}>
-            Bạn không có tài khoản,{' '}
-            <Text style={[styles.txtdk, {color: '#009245'}]}>
-              Tạo tài khoản
-            </Text>
+            Tôi đã có tài khoản{' '}
+            <Text style={[styles.txtdk, {color: '#009245'}]}>Đăng nhập</Text>
           </Text>
         </View>
       </View>
@@ -101,9 +98,15 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Reg;
 
 const styles = StyleSheet.create({
+  txtagre: {
+    color: 'black',
+    alignSelf: 'center',
+    textAlign: 'center',
+    fontFamily: 'DesignerVN-Poppins-Regular',
+  },
   or: {
     marginLeft: 10,
     marginRight: 10,
@@ -138,10 +141,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 21,
   },
-  txtrem: {
-    fontFamily: 'Poppins',
-    fontWeight: '500',
-  },
+
   inputpass: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -180,6 +180,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontFamily: 'DesignerVN-Poppins-ExtraBold',
     alignSelf: 'center',
+    marginTop: -30,
   },
   lineor: {
     width: '100%',
@@ -194,7 +195,7 @@ const styles = StyleSheet.create({
     height: 2,
   },
   logo: {
-    marginTop: -200,
+    marginTop: -300,
     resizeMode: 'contain',
     width: 482,
     height: 487,

@@ -1,6 +1,7 @@
 import { View, Text, SafeAreaView, StatusBar } from 'react-native'
 import React from 'react'
 import Login from './src/Login'
+import Reg from './src/Reg';
 
 const App = () => {
   return (
