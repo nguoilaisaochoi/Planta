@@ -9,12 +9,19 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 
-const Home = () => {
+const Home = props => {
+  const {navigation} = props;
+  const gotodetail = () => {
+    navigation.navigate('Detail');
+  };
   const [Data] = useState(data);
   const renderItem = ({item}) => {
     const {id, name, type, price, img} = item;
     return (
-      <TouchableOpacity style={styles.bgitem} activeOpacity={0.5}>
+      <TouchableOpacity
+        style={styles.bgitem}
+        activeOpacity={0.5}
+        onPress={() => gotodetail()}>
         <View style={styles.bgimg}>
           <Image style={{width: '100%', height: 134}} source={img} />
         </View>

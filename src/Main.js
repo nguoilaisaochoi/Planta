@@ -5,15 +5,15 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Home from './Home';
 import Setting from './Setting';
+import Detail from './Detail';
 
 const Main = () => {
   const Stack = createNativeStackNavigator();
   return (
-    <NavigationContainer>
-      <Stack.Navigator screenOptions={{headerShown: false}}>
-        <Stack.Screen name="Hometabs" component={HomeTabs} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Stack.Navigator screenOptions={{headerShown: false}}>
+      <Stack.Screen name="Hometabs" component={HomeTabs} />
+      <Stack.Screen name="Detail" component={Detail} />
+    </Stack.Navigator>
   );
 };
 
@@ -36,7 +36,10 @@ const tabScreenOptions = ({route}) => {
       if (route.name == 'Home') {
         return (
           <View>
-            <Image style={styles.icon} source={require('../assets/img/bottomtab/home.png')} />
+            <Image
+              style={styles.icon}
+              source={require('../assets/img/bottomtab/home.png')}
+            />
             {focused ? <View style={styles.dot}></View> : null}
           </View>
         );

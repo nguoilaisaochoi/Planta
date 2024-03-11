@@ -6,10 +6,19 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
-import React from 'react';
+import React, {useContext} from 'react';
 import LinearGradient from 'react-native-linear-gradient';
+import {Appcontext} from './Appcontext';
 
-const Login = () => {
+const Login = props => {
+  const {setIsLogin} = useContext(Appcontext);
+  const {navigation} = props;
+  const check = () => {
+    setIsLogin(true);
+  };
+  const gotoreg = () => {
+    navigation.navigate('Reg');
+  };
   return (
     <View>
       <Image
@@ -53,7 +62,7 @@ const Login = () => {
               Forgot Password ?
             </Text>
           </View>
-          <TouchableOpacity activeOpacity={0.8}>
+          <TouchableOpacity activeOpacity={0.8} onPress={() => check()}>
             <LinearGradient
               colors={['#007537', '#4CAF50']}
               style={styles.btn}
@@ -91,7 +100,9 @@ const Login = () => {
           </View>
           <Text style={[styles.txtdk, {color: 'black'}]}>
             Bạn không có tài khoản,{' '}
-            <Text style={[styles.txtdk, {color: '#009245'}]}>
+            <Text
+              style={[styles.txtdk, {color: '#009245'}]}
+              onPress={() => gotoreg()}>
               Tạo tài khoản
             </Text>
           </Text>
