@@ -8,6 +8,22 @@
     {
       "path": "assets/fonts/DesignerVN-Poppins-Regular.ttf",
       "sha1": "2a8dafa2395209037e2fc0d0bcf47efc612efebd"
+    },
+    {
+      "path": "assets/fonts/Lato Black.ttf",
+      "sha1": "ce5261438188fc48cf7cc38934ec7c6bbf94b27c"
+    },
+    {
+      "path": "assets/fonts/Lato Italic.ttf",
+      "sha1": "ec2af5318f54cad6b364ecf8737b58ac1cd496f1"
+    },
+    {
+      "path": "assets/fonts/Lato Medium.ttf",
+      "sha1": "2a9069296f1830898533cb1c1ae321e26b0e2665"
+    },
+    {
+      "path": "assets/fonts/Lato Regular.ttf",
+      "sha1": "5f996143c684c93882400062b5564b99426d4a43"
     }
   ]
 }
