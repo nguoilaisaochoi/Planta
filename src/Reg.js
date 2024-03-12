@@ -6,12 +6,25 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 
 const Reg = () => {
+  const [hoten, Sethoten] = useState('');
+  const [username, Setusername] = useState('');
+  const [sdt, setSdt] = useState('');
+  const [password, Setpassword] = useState('');
+  const [titleerror, Settitleerror] = useState('');
+  const checkdata = () => {
+    if (hoten == '' || username == '' || password == '' || sdt == '') {
+      Settitleerror('Không được bỏ trống!');
+    } else {
+      setIsLogin(true);
+    }
+  };
+
   return (
-    <View>
+    <View style={{backgroundColor: 'white', flex: 1}}>
       <Image
         style={styles.logo}
         source={require('../assets/img/Ellipse.png')}
@@ -26,22 +39,77 @@ const Reg = () => {
         <View style={{paddingLeft: 30, paddingRight: 30}}>
           <Text style={styles.txtwelcome}>Đăng kí</Text>
           <Text style={styles.txtdn}>Tạo tài khoản</Text>
-          <View style={styles.inputpass}>
-            <TextInput style={{width: '90%'}} placeholder="Họ tên" />
+          <View
+            style={[
+              styles.inputpass,
+              {
+                borderColor: titleerror && !hoten ? '#CE0000' : '#8B8B8B',
+              },
+            ]}>
+            <TextInput
+              style={{width: '90%'}}
+              placeholder="Họ tên"
+              onChangeText={data => {
+                Sethoten(data);
+                Settitleerror('');
+              }}
+            />
           </View>
-          <View style={styles.inputpass}>
-            <TextInput style={{width: '90%'}} placeholder="Email" />
+          <View
+            style={[
+              styles.inputpass,
+              {
+                borderColor: titleerror && !username ? '#CE0000' : '#8B8B8B',
+              },
+            ]}>
+            <TextInput
+              style={{width: '90%'}}
+              placeholder="Email"
+              onChangeText={data => {
+                Setusername(data);
+                Settitleerror('');
+              }}
+            />
           </View>
-          <View style={styles.inputpass}>
-            <TextInput style={{width: '90%'}} placeholder="Số điẹn thoại" />
+          <View
+            style={[
+              styles.inputpass,
+              {
+                borderColor: titleerror && !sdt ? '#CE0000' : '#8B8B8B',
+              },
+            ]}>
+            <TextInput
+              style={{width: '90%'}}
+              placeholder="Số điẹn thoại"
+              onChangeText={data => {
+                setSdt(data);
+                Settitleerror('');
+              }}
+            />
           </View>
-          <View style={styles.inputpass}>
-            <TextInput style={{width: '80%'}} placeholder="Mật khẩu" />
+          <View
+            style={[
+              styles.inputpass,
+              {
+                borderColor: titleerror && !password ? '#CE0000' : '#8B8B8B',
+              },
+            ]}>
+            <TextInput
+              style={{width: '80%'}}
+              placeholder="Mật khẩu"
+              onChangeText={data => {
+                Setpassword(data);
+                Settitleerror('');
+              }}
+            />
             <Image
               style={{width: 29, height: 24}}
               source={require('../assets/img/eye_off.png')}
             />
           </View>
+          {!!titleerror && (
+            <Text style={styles.txt1}>Không được bỏ trống!</Text>
+          )}
           <Text style={styles.txtagre}>
             Để đăng ký tài khoản, bạn đồng ý{' '}
             <Text style={{color: '#009245', textDecorationLine: 'underline'}}>
@@ -52,7 +120,7 @@ const Reg = () => {
               Privacy Policy
             </Text>
           </Text>
-          <TouchableOpacity activeOpacity={0.8}>
+          <TouchableOpacity activeOpacity={0.8} onPress={() => checkdata()}>
             <LinearGradient
               colors={['#007537', '#4CAF50']}
               style={styles.btn}
@@ -101,6 +169,12 @@ const Reg = () => {
 export default Reg;
 
 const styles = StyleSheet.create({
+  txt1: {
+    margin: 5,
+    color: '#CE0000',
+    fontSize: 14,
+    fontFamily: 'DesignerVN-Poppins-Regular',
+  },
   txtagre: {
     color: 'black',
     alignSelf: 'center',
@@ -147,7 +221,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     borderWidth: 1,
-    borderColor: '#8B8B8B',
     borderRadius: 10,
     paddingLeft: 14,
     paddingRight: 14,

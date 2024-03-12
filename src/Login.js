@@ -6,21 +6,29 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import {Appcontext} from './Appcontext';
 
 const Login = props => {
   const {setIsLogin} = useContext(Appcontext);
-  const {navigation} = props;
-  const check = () => {
-    setIsLogin(true);
+  const [username, Setusername] = useState('');
+  const [password, Setpassword] = useState('');
+  const [titleerror, Settitleerror] = useState('');
+
+  const checkdata = () => {
+    if (username == '' || password == '') {
+      Settitleerror('Không được bỏ trống!');
+    } else {
+      setIsLogin(true);
+    }
   };
+  const {navigation} = props;
   const gotoreg = () => {
     navigation.navigate('Reg');
   };
   return (
-    <View>
+    <View style={{backgroundColor: 'white', flex: 1}}>
       <Image
         style={styles.logo}
         source={require('../assets/img/Ellipse.png')}
@@ -35,19 +43,39 @@ const Login = props => {
         <View style={{paddingLeft: 30, paddingRight: 30}}>
           <Text style={styles.txtwelcome}>Chào mừng bạn</Text>
           <Text style={styles.txtdn}>Đăng nhập tài khoản</Text>
-          <View style={styles.inputpass}>
+          <View
+            style={[
+              styles.inputpass,
+              {
+                borderColor: titleerror && !username ? '#CE0000' : '#8B8B8B',
+              },
+            ]}>
             <TextInput
               style={{width: '90%'}}
               placeholder="Nhập email hoặc số điện thoại"
+              onChangeText={data => {
+                Setusername(data), Settitleerror('');
+              }}
             />
           </View>
-          <View style={styles.inputpass}>
-            <TextInput style={{width: '80%'}} placeholder="Mật khẩu" />
+          <View
+            style={[
+              styles.inputpass,
+              {borderColor: titleerror && !password ? '#CE0000' : '#8B8B8B'},
+            ]}>
+            <TextInput
+              style={{width: '80%'}}
+              placeholder="Mật khẩu"
+              onChangeText={data => {
+                Setpassword(data), Settitleerror('');
+              }}
+            />
             <Image
               style={{width: 29, height: 24}}
               source={require('../assets/img/eye_off.png')}
             />
           </View>
+          {!!titleerror && <Text style={styles.txt1}>{titleerror}</Text>}
           <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <View style={{flexDirection: 'row'}}>
               <Image
@@ -62,7 +90,7 @@ const Login = props => {
               Forgot Password ?
             </Text>
           </View>
-          <TouchableOpacity activeOpacity={0.8} onPress={() => check()}>
+          <TouchableOpacity activeOpacity={0.8} onPress={() => checkdata()}>
             <LinearGradient
               colors={['#007537', '#4CAF50']}
               style={styles.btn}
@@ -115,6 +143,13 @@ const Login = props => {
 export default Login;
 
 const styles = StyleSheet.create({
+  txt1: {
+    // Invalid email or Password . Try Again !
+    margin: 5,
+    color: '#CE0000',
+    fontSize: 14,
+    fontFamily: 'DesignerVN-Poppins-Regular',
+  },
   or: {
     marginLeft: 10,
     marginRight: 10,
@@ -123,7 +158,7 @@ const styles = StyleSheet.create({
   },
   txtdk: {
     // Tạo tài khoán
-    marginTop: 29,
+    marginTop: 20,
     fontFamily: 'DesignerVN-Poppins-Regular',
     alignSelf: 'center',
   },
@@ -131,7 +166,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     width: '60%',
     flexDirection: 'row',
-    marginTop: 35,
+    marginTop: 30,
     justifyContent: 'space-around',
   },
   btndn: {
@@ -158,7 +193,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     borderWidth: 1,
-    borderColor: '#8B8B8B',
     borderRadius: 10,
     paddingLeft: 14,
     paddingRight: 14,
