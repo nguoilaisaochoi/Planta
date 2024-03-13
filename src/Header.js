@@ -2,8 +2,11 @@ import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 
-const Header = ({txt, img}) => {
+const Header = ({txt, img,imgdel}, props) => {
   const navigation = useNavigation();
+  const gotocart = () => {
+    navigation.navigate('Cart');
+  };
   return (
     <View>
       <Text style={styles.txt1}>{txt}</Text>
@@ -17,8 +20,19 @@ const Header = ({txt, img}) => {
         />
       </TouchableOpacity>
       {!!img && (
-        <TouchableOpacity style={styles.img2} activeOpacity={0.5}>
+        <TouchableOpacity
+          style={styles.img2}
+          activeOpacity={0.5}
+          onPress={() => gotocart()}>
           <Image style={{width: 26, height: 26}} source={img} />
+        </TouchableOpacity>
+      )}
+      {!!imgdel && (
+        <TouchableOpacity
+          style={styles.img2}
+          activeOpacity={0.5}
+          onPress={() => gotocart()}>
+          <Image style={{width: 26, height: 26}} source={imgdel} />
         </TouchableOpacity>
       )}
     </View>

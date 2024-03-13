@@ -6,7 +6,7 @@ import Main from './src/Main';
 import Detail from './src/Detail';
 import AppNavigation from './src/AppNavigation';
 import {Appprovider} from './src/Appcontext';
-import ListPlant from './src/ListPlant';
+
 
 const App = () => {
   return (

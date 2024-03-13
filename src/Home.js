@@ -17,6 +17,9 @@ const Home = props => {
   const golistplant = () => {
     navigation.navigate('ListPlant');
   };
+  const gotocart = () => {
+    navigation.navigate('Cart');
+  };
   const [Data] = useState(data);
   const renderItem = ({item}) => {
     const {id, name, type, price, img} = item;
@@ -37,7 +40,10 @@ const Home = props => {
   return (
     <View style={{backgroundColor: 'white', flex: 1}}>
       <View style={{backgroundColor: '#F6F6F6'}}>
-        <TouchableOpacity style={styles.cart} activeOpacity={0.5}>
+        <TouchableOpacity
+          style={styles.cart}
+          activeOpacity={0.5}
+          onPress={() => gotocart()}>
           <Image
             style={{width: 48, height: 46}}
             source={require('../assets/img/cart.png')}

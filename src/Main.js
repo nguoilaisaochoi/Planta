@@ -7,6 +7,7 @@ import Home from './Home';
 import Setting from './Setting';
 import Detail from './Detail';
 import ListPlant from './ListPlant';
+import Cart from './Cart';
 
 const Main = () => {
   const Stack = createNativeStackNavigator();
@@ -15,6 +16,7 @@ const Main = () => {
       <Stack.Screen name="Hometabs" component={HomeTabs} />
       <Stack.Screen name="Detail" component={Detail} />
       <Stack.Screen name="ListPlant" component={ListPlant} />
+      <Stack.Screen name="Cart" component={Cart} />
     </Stack.Navigator>
   );
 };
