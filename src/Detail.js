@@ -1,18 +1,11 @@
 import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import React from 'react';
+import Header from './Header';
 
 const Detail = () => {
   return (
     <View style={{backgroundColor: 'white', flex: 1}}>
-      <Text style={styles.txt1}>Spider Plant</Text>
-      <Image
-        style={styles.img1}
-        source={require('../assets/img/backnobg.png')}
-      />
-      <Image
-        style={styles.img2}
-        source={require('../assets/img/cartnobg.png')}
-      />
+      <Header txt="Detail Page" img={require('../assets/img/cartnobg.png')} />
       <View style={styles.view1}>
         <Image
           style={styles.img3}
@@ -220,30 +213,5 @@ const styles = StyleSheet.create({
     position: 'relative',
     height: 268,
     backgroundColor: '#F6F6F6',
-  },
-  txt1: {
-    // Spider Plant
-    alignSelf: 'center',
-    color: '#221F1F',
-    fontSize: 18,
-    fontFamily: 'Lato Medium',
-    marginTop: 30,
-    paddingBottom: 17,
-  },
-  img1: {
-    //back
-    position: 'absolute',
-    top: 30,
-    left: 20,
-    width: 26,
-    height: 26,
-  },
-  img2: {
-    //cart
-    position: 'absolute',
-    right: 20,
-    top: 30,
-    width: 26,
-    height: 26,
   },
 });

@@ -14,6 +14,9 @@ const Home = props => {
   const gotodetail = () => {
     navigation.navigate('Detail');
   };
+  const golistplant = () => {
+    navigation.navigate('ListPlant');
+  };
   const [Data] = useState(data);
   const renderItem = ({item}) => {
     const {id, name, type, price, img} = item;
@@ -41,7 +44,7 @@ const Home = props => {
           />
         </TouchableOpacity>
         <Text style={styles.txt1}>Planta - toả sáng không gian nhà bạn</Text>
-        <Text style={styles.txt2}>
+        <Text style={styles.txt2} onPress={() => golistplant()}>
           Xem hàng mới về
           <Image
             style={{width: 24, height: 24}}
@@ -57,15 +60,15 @@ const Home = props => {
       <View style={{padding: 20}}>
         <Text style={styles.txt3}>Cây trồng </Text>
       </View>
-      <View style={styles.FlatList}>
-        <FlatList
-          data={Data}
-          renderItem={renderItem}
-          keyExtractor={item => item.id}
-          showsHorizontalScrollIndicator={false}
-          numColumns={2}
-        />
-      </View>
+
+      <FlatList
+        data={Data}
+        renderItem={renderItem}
+        keyExtractor={item => item.id}
+        showsVerticalScrollIndicator={false}
+        numColumns={2}
+        contentContainerStyle={styles.FlatList}
+      />
     </View>
   );
 };
@@ -159,6 +162,34 @@ var data = [
   },
   {
     id: 2,
+    name: 'Spider Plant2',
+    type: 'Ưa bóng',
+    price: '280.000',
+    img: require('../assets/img/item.png'),
+  },
+  {
+    id: 3,
+    name: 'Spider Plant2',
+    type: 'Ưa bóng',
+    price: '280.000',
+    img: require('../assets/img/item.png'),
+  },
+  {
+    id: 4,
+    name: 'Spider Plant2',
+    type: 'Ưa bóng',
+    price: '280.000',
+    img: require('../assets/img/item.png'),
+  },
+  {
+    id: 5,
+    name: 'Spider Plant2',
+    type: 'Ưa bóng',
+    price: '280.000',
+    img: require('../assets/img/item.png'),
+  },
+  {
+    id: 6,
     name: 'Spider Plant2',
     type: 'Ưa bóng',
     price: '280.000',
