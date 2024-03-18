@@ -8,6 +8,9 @@ import Setting from './Setting';
 import Detail from './Detail';
 import ListPlant from './ListPlant';
 import Cart from './Cart';
+import Search from './Search';
+import Noti from './Noti';
+import Animated, {FadeInDown, FadeInUp} from 'react-native-reanimated';
 
 const Main = () => {
   const Stack = createNativeStackNavigator();
@@ -16,7 +19,11 @@ const Main = () => {
       <Stack.Screen name="Hometabs" component={HomeTabs} />
       <Stack.Screen name="Detail" component={Detail} />
       <Stack.Screen name="ListPlant" component={ListPlant} />
-      <Stack.Screen name="Cart" component={Cart} />
+      <Stack.Screen
+        name="Cart"
+        component={Cart}
+        options={{animation: 'fade'}}
+      />
     </Stack.Navigator>
   );
 };
@@ -26,6 +33,8 @@ const HomeTabs = () => {
   return (
     <Tab.Navigator screenOptions={tabScreenOptions}>
       <Tab.Screen name="Home" component={Home} />
+      <Tab.Screen name="Search" component={Search} />
+      <Tab.Screen name="Noti" component={Noti} />
       <Tab.Screen name="Setting" component={Setting} />
     </Tab.Navigator>
   );
@@ -47,22 +56,22 @@ const tabScreenOptions = ({route}) => {
             {focused ? <View style={styles.dot}></View> : null}
           </View>
         );
-      } else if (route.name == 'Card') {
+      } else if (route.name == 'Search') {
         return (
           <View>
             <Image
               style={styles.icon}
-              source={require('../assets/img/bottomtab/home.png')}
+              source={require('../assets/img/bottomtab/search.png')}
             />
             {focused ? <View style={styles.dot}></View> : null}
           </View>
         );
-      } else if (route.name === 'Fav') {
+      } else if (route.name === 'Noti') {
         return (
           <View>
             <Image
               style={styles.icon}
-              source={require('../assets/img/bottomtab/home.png')}
+              source={require('../assets/img/bottomtab/bell.png')}
             />
             {focused ? <View style={styles.dot}></View> : null}
           </View>
@@ -82,7 +91,7 @@ const tabScreenOptions = ({route}) => {
   };
 };
 const styles = StyleSheet.create({
-  icon: {width: 30, height: 30},
+  icon: {width: 25, height: 25},
   dot: {
     alignSelf: 'center',
     width: 6, // Độ rộng của chấm
