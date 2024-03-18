@@ -9,7 +9,8 @@ import {
 import React, {useState} from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 
-const Reg = () => {
+const Reg = props => {
+  const {navigation} = props;
   const [hoten, Sethoten] = useState('');
   const [username, Setusername] = useState('');
   const [sdt, setSdt] = useState('');
@@ -22,14 +23,19 @@ const Reg = () => {
       setIsLogin(true);
     }
   };
-
+  const goback = () => {
+    navigation.navigate('Login');
+  };
   return (
     <View style={{backgroundColor: 'white', flex: 1}}>
       <Image
         style={styles.logo}
         source={require('../assets/img/Ellipse.png')}
       />
-      <TouchableOpacity style={styles.back} activeOpacity={0.8}>
+      <TouchableOpacity
+        style={styles.back}
+        activeOpacity={0.8}
+        onPress={() => goback()}>
         <Image
           style={{borderRadius: 99}}
           source={require('../assets/img/back.png')}
